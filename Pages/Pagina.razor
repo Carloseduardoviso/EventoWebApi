@@ -1,0 +1,43 @@
+﻿@page "/pagina"
+@inject HttpClient Http
+@using EventoApp.Web.Shared
+
+<PageTitle>Languages List</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Languages List</MudText>
+<MudText Class="mb-8">Este componente demonstra a busca de dados do servidor.</MudText>
+
+@if (animes == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudTable Items="animes" Hover="true" SortLabel="Sort By" Elevation="0">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<LanguagesList, object>(x=>x.rank)">Rank</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<LanguagesList, object>(x=>x.Titulo)">Titulo</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<LanguagesList, object>(x=>x.score)">Score</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="rank">@context.rank</MudTd>
+            <MudTd DataLabel="Temp. (C)">@context.Titulo</MudTd>
+            <MudTd DataLabel="Temp. (F)">@context.score</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[]{50, 100}" />
+        </PagerContent>
+    </MudTable>
+}
+
+
+
+@code {
+    private LanguagesList[]? animes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        animes = await Http.GetFromJsonAsync<LanguagesList[]>("sample-data/Languageslist.json");
+    }
+    
+}

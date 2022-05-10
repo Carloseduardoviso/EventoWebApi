@@ -1,0 +1,28 @@
+[
+    {
+      "rank": 1,
+      "titulo": "HTML5",
+      "score": "8.53"
+    },
+    {
+      "rank": 2,
+      "titulo": "CSS3",
+      "score": "8.63"
+    },
+    {
+      "rank": 3,
+      "titulo": "JavaScript",
+      "score": "9.14"
+    },
+    {
+      "rank": 4,
+      "titulo": "C#",
+      "score": "8.51"
+    },
+    {
+      "rank": 5,
+      "titulo": "PHP",
+      "score": "7.20"
+    }
+  ]
+  
